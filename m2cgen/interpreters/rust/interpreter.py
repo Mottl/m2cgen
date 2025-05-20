@@ -19,16 +19,16 @@ class RustInterpreter(ImperativeToCodeInterpreter,
         BinNumOpType.MUL: "mul_vector_number",
     }
 
-    abs_function_name = "f64::abs"
-    atan_function_name = "f64::atan"
-    exponent_function_name = "f64::exp"
-    logarithm_function_name = "f64::ln"
-    log1p_function_name = "f64::ln_1p"
-    power_function_name = "f64::powf"
+    abs_function_name = "f32::abs"
+    atan_function_name = "f32::atan"
+    exponent_function_name = "f32::exp"
+    logarithm_function_name = "f32::ln"
+    log1p_function_name = "f32::ln_1p"
+    power_function_name = "f32::powf"
     sigmoid_function_name = "sigmoid"
     softmax_function_name = "softmax"
-    sqrt_function_name = "f64::sqrt"
-    tanh_function_name = "f64::tanh"
+    sqrt_function_name = "f32::sqrt"
+    tanh_function_name = "f32::tanh"
 
     with_sigmoid_expr = False
     with_softmax_expr = False

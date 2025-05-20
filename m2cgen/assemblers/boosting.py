@@ -312,7 +312,10 @@ class LightGBMModelAssembler(BaseTreeBoostingAssembler):
         if "leaf_value" in tree:
             return ast.NumVal(tree["leaf_value"])
 
-        threshold = ast.NumVal(tree["threshold"])
+        if tree["threshold"] == 1e300:  # LightGBM stores infinity as 1e300
+            threshold = ast.NumVal("inf")
+        else:
+            threshold = ast.NumVal(tree["threshold"])
         feature_ref = ast.FeatureRef(tree["split_feature"])
 
         op = ast.CompOpType.from_str_op(tree["decision_type"])

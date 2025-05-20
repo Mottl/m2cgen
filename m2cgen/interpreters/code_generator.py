@@ -31,6 +31,8 @@ class BaseCodeGenerator:
     """
 
     tpl_num_value = NotImplemented
+    tpl_num_inf = NotImplemented
+    tpl_num_neginf = NotImplemented
     tpl_infix_expression = NotImplemented
     tpl_array_index_access = NotImplemented
 
@@ -106,7 +108,13 @@ class BaseCodeGenerator:
         return result if not wrap else f"({result})"
 
     def num_value(self, value):
-        return self.tpl_num_value(value=value)
+        if np.isinf(value):
+            if value > 0:
+                return self.tpl_num_inf(value=value)
+            else:
+                return self.tpl_num_neginf(value=value)
+        else:
+            return self.tpl_num_value(value=value)
 
     def array_index_access(self, array_name, index):
         return self.tpl_array_index_access(array_name=array_name, index=index)
